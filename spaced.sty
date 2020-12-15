@@ -202,7 +202,15 @@ import geometry;
   {}%                                    % Punctuation after theorem head
   {\newline}%                                    % Space after theorem head, ' ', or \newline
   {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
-  
+\newtheoremstyle{solution}
+  {0pt}
+  {0pt}
+  {}
+  {}
+  {\color{dblue}\notofont\bfseries}
+  {:}
+  {1.5mm}
+  {\thmname{#1}\thmnote{ #3}}
 \theoremstyle{theorem}
 \newmdtheoremenv[% settings
 backgroundcolor=lblue,
@@ -319,3 +327,7 @@ topline=false,
 bottomline=false,
 rightline=false,
 leftline=false]{example}{Example}
+
+\theoremstyle{solution}
+
+\newtheorem{solution}{Solution}
