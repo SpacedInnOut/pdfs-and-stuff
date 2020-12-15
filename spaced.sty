@@ -211,7 +211,7 @@ import geometry;
   {0pt}
   {}
   {}
-  {\color{dgreen}\carlfont\bfseries}
+  {\color{black}\carlfont\bfseries}
   {:}
   {1.5mm}
   {\thmname{#1}\thmnote{ #3}}
@@ -224,6 +224,33 @@ import geometry;
  {:}
  {1.5mm}
  {\thmname{#1}\thmnote{ #3}}
+\newtheoremstyle{fact}
+ {0pt}%                                     % Space above
+ {2pt}%                                     % Space below
+ {}%                                     % Body font
+ {}%                                     % Indent amount
+ {\color{dorange}\sffamily\bfseries}%                            % Theorem head font
+ {}%                                    % Punctuation after theorem head
+ {\newline}%                                    % Space after theorem head, ' ', or \newline
+ {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{fact}
+ {0pt}%                                     % Space above
+ {2pt}%                                     % Space below
+ {}%                                     % Body font
+ {}%                                     % Indent amount
+ {\color{dorange}\sffamily\bfseries}%                            % Theorem head font
+ {}%                                    % Punctuation after theorem head
+ {\newline}%                                    % Space after theorem head, ' ', or \newline
+ {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{algorithm}
+ {0pt}%                                     % Space above
+ {2pt}%                                     % Space below
+ {}%                                     % Body font
+ {}%                                     % Indent amount
+ {\color{dneonblue}\sffamily\bfseries}%                            % Theorem head font
+ {}%                                    % Punctuation after theorem head
+ {\newline}%                                    % Space after theorem head, ' ', or \newline
+ {\thmnote{#3}}%                                     % Theorem head spec (can be left empty, meaning `normal')
 \theoremstyle{theorem}
 \newmdtheoremenv[% settings
 backgroundcolor=lblue,
@@ -351,7 +378,7 @@ leftline=false]{example}{Example}
 \theoremstyle{pro}
 \newmdtheoremenv[
 backgroundcolor=white,
-nobreak=true,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
@@ -365,4 +392,45 @@ leftline=true]{pro}{Proof}
 \renewcommand{\thepro}{\unskip}
 
 \def\endpro{\hfill$\blacksquare$}
+\theoremstyle{solution}
+\newmdtheoremenv[
+backgroundcolor=white,
+nobreak=false,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=black,
+linewidth=3pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{sol}{Solution}
 
+\renewcommand{\thesol}{\unskip}
+
+\def\endsol{\hfill$\blacksquare$}
+\theoremstyle{fact}
+\newmdtheoremenv[% settings
+backgroundcolor=lyellow,
+linecolor=dorange,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{fact}{Fact}
+
+\theoremstyle{algorithm}
+\newmdtheoremenv[% settings
+backgroundcolor=lmintblue,
+linecolor=dneonblue,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{algorithm}{Algorithm}
