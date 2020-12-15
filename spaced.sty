@@ -16,6 +16,7 @@ import geometry;
 
 \RequirePackage{amsmath,amssymb,amsthm}
 \RequirePackage{mdframed}
+
 %random operator that i decided to throw in
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
@@ -38,10 +39,10 @@ import geometry;
 \RequirePackage[hypertexnames=false]{hyperref}
 \hypersetup{
     colorlinks,
-    citecolor=dblue,
-    filecolor=dblue,
-    linkcolor=dblue,
-    urlcolor=dblue
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=darkblue
 }
 
 %TOC MUST STAY BLACK
@@ -206,10 +207,19 @@ import geometry;
   {0pt}
   {}
   {}
-  {\color{dblue}\notofont\bfseries}
+  {\color{dblue}\carlfont\bfseries}
   {:}
   {1.5mm}
   {\thmname{#1}\thmnote{ #3}}
+\newtheoremstyle{pro}
+ {0pt}
+ {0pt}
+ {}
+ {}
+ {\color{dpurple}\sffamily\bfseries}
+ {:}
+ {1.5mm}
+ {\thmname{#1}\thmnote{ #3}}
 \theoremstyle{theorem}
 \newmdtheoremenv[% settings
 backgroundcolor=lblue,
@@ -328,5 +338,28 @@ rightline=false,
 leftline=false]{example}{Example}
 
 \theoremstyle{solution}
-
 \newtheorem{solution}{Solution}
+
+\renewcommand{\thesolution}{\unskip}
+
+\def\endsolution{\hfill$\blacksquare$}
+%proof taken  from dennis.sty ;P
+\theoremstyle{pro}
+\newmdtheoremenv[
+backgroundcolor=white,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=dpurple,
+linewidth=3pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{pro}{Proof}
+
+\renewcommand{\thepro}{\unskip}
+
+\def\endpro{\hfill$\blacksquare$}
+
+
