@@ -1,0 +1,321 @@
+\ProvidesPackage{spaced}
+%nonsense that is needed for every sty
+\RequirePackage{asymptote}
+\begin{asydef}
+size(6cm);
+import olympiad;
+import cse5;
+import geometry;
+\end{asydef}
+
+\RequirePackage{tikz}
+\RequirePackage{tkz-euclide}
+\usetikzlibrary{calc}
+
+\RequirePackage{babel}
+
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mdframed}
+
+%random operator that i decided to throw in
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+%colors
+\usepackage{xcolor}
+\definecolor{dpurple}{RGB}{155, 50, 168} %dark purple
+\definecolor{lpurple}{RGB}{253, 237, 255} %light purple
+\definecolor{dorange}{RGB}{235, 197, 45} %dark orange
+\definecolor{lyellow}{RGB}{255, 255, 227} %yellow
+\definecolor{dneonblue}{RGB}{89, 212, 212} %neon blue
+\definecolor{lmintblue}{RGB}{235, 255, 255} %mint blue
+\definecolor{dblue}{RGB}{45, 80, 235} %dark blue
+\definecolor{lblue}{RGB}{230, 234, 255} %light blue
+\definecolor{dgreen}{RGB}{2, 117, 15} %dark green
+\definecolor{lgreen}{RGB}{227, 255, 230} %light green
+\definecolor{dred}{RGB}{227, 11, 11} %dark red
+\definecolor{lred}{RGB}{255, 237, 237}
+\definecolor{titlegreen}{RGB}{9, 66, 82}
+%blue links
+\RequirePackage[hypertexnames=false]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=darkblue
+}
+
+%TOC MUST STAY BLACK
+
+\newcommand{\toc}{
+{\hypersetup{
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black}
+\tableofcontents}
+}
+
+%fonts
+\RequirePackage{newpxtext,newpxmath}
+
+\RequirePackage{fontawesome}
+\RequirePackage{marvosym}
+\RequirePackage{pifont}
+
+\RequirePackage[skaknew]{skak}
+
+\DeclareRobustCommand{\cantafont}{\fontfamily{Cantarell-TLF}\selectfont}
+\DeclareRobustCommand{\carlfont}{\fontfamily{Carlito-OsF}\selectfont}
+
+%header
+\RequirePackage{etoolbox} %what is this for again
+
+\patchcmd{\@maketitle}{\@title}{\carlfont\color{titlegreen}\bfseries\@title}{}{}
+\patchcmd{\@maketitle}{\@author}{\carlfont\@author}{}{}
+\patchcmd{\@maketitle}{\@date}{\carlfont\color{titlegreen}{\@date}}{}{}
+
+%MARGINS!
+\RequirePackage[letterpaper,top=0.5in,bottom=1in,left=0.5in,right=0.5in]{geometry}
+
+%sectioning
+\RequirePackage{titlesec}
+
+\titleformat{\section}
+{\carlfont\Large\bfseries}{{\color{titlegreen}\faPencil\,\thesection}}{0.8em}{}
+
+% subsections
+\titleformat{\subsection}
+{\sffamily\large\bfseries}{{\color{titlegreen}\thesubsection}}{0.9em}{}
+
+%subsubsections (just in case!)
+
+\titleformat{\subsubsection}
+{\sffamily\normalsize\bfseries}{{\color{titlegreen}\thesubsubsection}}{0.9em}{}
+
+%theorems
+\newtheoremstyle{theorem}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{theorem*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{lemma}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{lemma*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{corollary}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{corollary*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{postulate}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dgreen}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{postulate*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dgreen}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{proposition}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dgreen}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{proposition*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dgreen}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{problem}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dred}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+\newtheoremstyle{problem*}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{dred}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {\newline}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+  
+\theoremstyle{theorem}
+\newmdtheoremenv[% settings
+backgroundcolor=lblue,
+linecolor=dblue,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{theorem}{Theorem}
+
+\theoremstyle{lemma}
+\newmdtheoremenv[% settings
+backgroundcolor=lblue,
+linecolor=dblue,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{lemma}{Lemma}
+
+\theoremstyle{corollary}
+\newmdtheoremenv[% settings
+backgroundcolor=lblue,
+linecolor=dblue,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{corollary}{Corollary}
+
+\theoremstyle{postulate}
+\newmdtheoremenv[% settings
+backgroundcolor=lgreen,
+linecolor=dgreen,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{postulate}{Postulate}
+
+\theoremstyle{proposition}
+\newmdtheoremenv[% settings
+backgroundcolor=lgreen,
+linecolor=dgreen,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{proposition}{Proposition}
+
+\theoremstyle{proposition}
+\newmdtheoremenv[% settings
+backgroundcolor=lgreen,
+linecolor=dgreen,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{definition}{Definition}
+
+\theoremstyle{problem}
+\newmdtheoremenv[% settings
+backgroundcolor=lred,
+linecolor=dred,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{problem}{Problem}
+
+\theoremstyle{problem}
+\newmdtheoremenv[% settings
+backgroundcolor=lred,
+linecolor=dred,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{exercise}{Exercise}
+
+\theoremstyle{problem}
+\newmdtheoremenv[% settings
+backgroundcolor=lred,
+linecolor=dred,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=false]{example}{Example}
