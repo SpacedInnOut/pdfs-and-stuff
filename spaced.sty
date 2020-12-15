@@ -55,6 +55,10 @@ import geometry;
 	urlcolor=black}
 \tableofcontents}
 }
+%\usepackage{tocloft}
+%\usepackage{fontawesome}
+%\addtolength\cftsecnumwidth{0.7em} 
+%\renewcommand\cftsecpresnum{\faDiamond}
 
 %fonts
 \RequirePackage{newpxtext,newpxmath}
@@ -82,7 +86,7 @@ import geometry;
 \RequirePackage{titlesec}
 
 \titleformat{\section}
-{\carlfont\Large\bfseries}{{\color{titlegreen}\faPencil\,\thesection}}{0.8em}{}
+{\carlfont\Large\bfseries}{{\color{titlegreen}\faPencil\,\thesection}}{0.8em}{}[{\titlerule[0.8pt]}]
 
 % subsections
 \titleformat{\subsection}
