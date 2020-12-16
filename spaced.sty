@@ -42,7 +42,7 @@ import geometry;
     citecolor=black,
     filecolor=black,
     linkcolor=blue,
-    urlcolor=darkblue
+    urlcolor=dblue
 }
 
 %TOC MUST STAY BLACK
@@ -378,7 +378,7 @@ leftline=false]{example}{Example}
 \theoremstyle{pro}
 \newmdtheoremenv[
 backgroundcolor=white,
-nobreak=false,
+nobreak=true,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
@@ -392,10 +392,11 @@ leftline=true]{pro}{Proof}
 \renewcommand{\thepro}{\unskip}
 
 \def\endpro{\hfill$\blacksquare$}
+
 \theoremstyle{solution}
 \newmdtheoremenv[
 backgroundcolor=white,
-nobreak=false,
+nobreak=true,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
