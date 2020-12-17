@@ -81,3 +81,22 @@ import geometry;
 \patchcmd{\@maketitle}{\@title}{\color{tblue}\bfseries\@title}{}{}
 \patchcmd{\@maketitle}{\@author}{\@author}{}{}
 \patchcmd{\@maketitle}{\@date}{{\@date}}{}{}
+
+%links
+\RequirePackage[hypertexnames=false]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+%table of contents
+\newcommand{\toc}{
+{\hypersetup{
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black}
+\tableofcontents}
+}
