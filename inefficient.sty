@@ -1,0 +1,83 @@
+\ProvidesPackage{inefficient}
+
+%taken from spaced.sty
+\RequirePackage{asymptote}
+\begin{asydef}
+size(6cm);
+import olympiad;
+import cse5;
+import geometry;
+\end{asydef}
+
+\RequirePackage{tikz}
+\RequirePackage{tkz-euclide}
+\usetikzlibrary{calc}
+
+\RequirePackage{babel}
+
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{tcolorbox}
+
+%random operator that i decided to throw in
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+%colors
+\usepackage{xcolor}
+\definecolor{tblue}{RGB}{29, 38, 120} %dark blue
+\definecolor{tred}{RGB}{92, 0, 0} %dark red
+\definecolor{tgreen}{RGB}{0, 89, 15} %dark green
+%tcolorbox
+\usepackage{tcolorbox}
+
+\newtcolorbox{bluebox}[3][]{
+  colframe = tblue,
+  colback  = white,
+  coltitle = white,  
+  title    = {#3},
+  #1,
+  sharp corners,
+}
+
+\newtcolorbox{redbox}[3][]{
+  colframe = tred,
+  colback  = white,
+  coltitle = white,  
+  title    = {#3},
+  #1,
+  sharp corners,
+}
+
+\newtcolorbox{greenbox}[3][]{
+  colframe = tgreen,
+  colback  = white,
+  coltitle = white,  
+  title    = {#3},
+  #1,
+  sharp corners,
+}
+
+%margins
+\RequirePackage[letterpaper,bottom=1in,left=0.5in,right=0.5in,top=0.5in]{geometry}
+
+%sections from dennis.sty
+%sectioning
+\RequirePackage{titlesec}
+\usepackage{fontawesome}
+\titleformat{\section}
+{\Large\bfseries}{{\color{tblue}\faGears\,\thesection}}{0.8em}{}
+
+% subsections
+\titleformat{\subsection}
+{\sffamily\large\bfseries}{{\thesubsection}}{0.9em}{}
+
+%subsubsections (just in case!)
+
+\titleformat{\subsubsection}
+{\sffamily\normalsize\bfseries}{{\thesubsubsection}}{0.9em}{}
+
+%title, author, date
+\RequirePackage{etoolbox} %what is this for again
+
+\patchcmd{\@maketitle}{\@title}{\color{tblue}\bfseries\@title}{}{}
+\patchcmd{\@maketitle}{\@author}{\@author}{}{}
+\patchcmd{\@maketitle}{\@date}{{\@date}}{}{}
