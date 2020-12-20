@@ -72,7 +72,7 @@ import geometry;
 \patchcmd{\@maketitle}{\@date}{\cabinfont{\@date}}{}{}
 
 %MARGINS!
-\RequirePackage[letterpaper,top=0.5in,bottom=1in,left=0.5in,right=0.5in]{geometry}
+\RequirePackage[letterpaper,top=0.7in,bottom=1in,left=0.5in,right=0.5in]{geometry}
 
 %sectioning
 \RequirePackage{titlesec}
@@ -211,3 +211,25 @@ rightline=true,
 leftline=true,
 innertopmargin=0.5em,
 innerbottommargin=0.5em]{orangebox}{Orangebox}
+
+%headers from cncm.sty
+%\pagestyle{fancy}
+%\rhead[]{\thepage}
+%\lhead[\thepage]{}
+%\cfoot[]{}
+%\renewcommand{\headrulewidth}{0pt}
+
+%\newcommand{\runningheads}[2]{
+   %\chead[\color{MidnightBlue}{\footnotesize #1}]  % Author page header
+   %{\color{MidnightBlue}{\footnotesize #2}}  % Short title
+  %}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[L,R]{\author}
+%\fancyhead[R,L]{\title}
+%\fancyfoot[C,C]{\leftmark}
+%\fancyfoot[L,R]{\thepage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
