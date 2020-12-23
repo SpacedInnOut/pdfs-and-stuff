@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{spaced}[choose.sty class file]
+\ProvidesClass{choose}[choose.sty class file]
 \LoadClass[]{scrreprt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -33,7 +33,7 @@ import geometry;
 \definecolor{chooselightpurple}{RGB}{253, 237, 255} %light purple
 \definecolor{chooseorange}{RGB}{232, 105, 43} %orange
 \definecolor{chooselightorange}{RGB}{255, 249, 242} %light orange
-\definecolor{MidnightBlue}{HTML}{191970} %light orange
+\definecolor{MidnightBlue}{HTML}{191970} 
 		\@ifundefined{KOMAClassName}{}{
 			\@ifundefined{chapter}{}{
 				\addtokomafont{partprefix}{\rmfamily}
